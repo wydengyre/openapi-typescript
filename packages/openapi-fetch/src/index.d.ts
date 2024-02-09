@@ -190,10 +190,7 @@ export declare function createFinalURL<O>(
   pathname: string,
   options: {
     baseUrl: string;
-    params: {
-      query?: Record<string, unknown>;
-      path?: Record<string, unknown>;
-    };
+    query?: Record<string, unknown>;
     querySerializer: QuerySerializer<O>;
   },
 ): string;

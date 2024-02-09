@@ -25,11 +25,7 @@ const { GET, PUT } = createClient<paths>({ baseUrl: "https://myapi.dev/v1/" });
 const {
   data, // only present if 2XX response
   error, // only present if 4XX or 5XX response
-} = await GET("/blogposts/{post_id}", {
-  params: {
-    path: { post_id: "123" },
-  },
-});
+} = await GET("/blogposts/123");
 
 await PUT("/blogposts", {
   body: {

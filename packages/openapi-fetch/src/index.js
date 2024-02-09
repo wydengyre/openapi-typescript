@@ -39,7 +39,7 @@ export default function createClient(clientOptions) {
     // URL
     const finalURL = createFinalURL(url, {
       baseUrl,
-      params,
+      query,
       querySerializer,
     });
     const finalHeaders = mergeHeaders(
@@ -231,12 +231,7 @@ export function defaultBodySerializer(body) {
  */
 export function createFinalURL(pathname, options) {
   let finalURL = `${options.baseUrl}${pathname}`;
-  if (options.params.path) {
-    for (const [k, v] of Object.entries(options.params.path)) {
-      finalURL = finalURL.replace(`{${k}}`, encodeURIComponent(String(v)));
-    }
-  }
-  const search = options.querySerializer(options.params.query ?? {});
+  const search = options.querySerializer(options.query ?? {});
   if (search) {
     finalURL += `?${search}`;
   }
